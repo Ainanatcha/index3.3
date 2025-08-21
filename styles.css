@@ -1,0 +1,148 @@
+/* Reset margin and set default font */
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  overflow: hidden;
+}
+
+/* Full container */
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top section - slide in */
+.top-section {
+  background-color: #77292dcb;
+  height: 20%;
+  animation: slideDown 1s ease-out forwards;
+  transition: opacity 0.5s ease;
+}
+
+/* Bottom section */
+.bottom-section {
+  background-color: #f1d2d2;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 2s ease-out forwards;
+}
+
+/* Tree icon animation */
+.tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  animation: moveUp 1.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Circle (tree top) */
+.circle {
+  width: 100px;
+  height: 100px;
+ background-color: #77292dcb;
+  border-radius: 50%;
+  transition: transform 1.5s ease-in-out;
+  z-index: 1;
+  margin-bottom: 0;         /* ยกเลิกระยะห่างล่าง */
+}
+
+/* Trunk (tree base) */
+.trunk {
+  width: 20px;
+  height: 50px;
+ background-color: #77292dcb;
+  margin-top: -2px;         /* ดึงขึ้นมาชนกับวงกลม */
+  transition: transform 1.5s ease-in-out;
+}
+
+/* Text styling + animation */
+.text {
+  color: #4d1f21; /* สีเข้มเหมือนต้นไม้ */
+  background-color: #f5e8e8; /* สีพื้นหลังอ่อนๆ */
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 25px;
+  border: 2px solid #e5c7c7;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.95);
+  animation: fadeGrow 1.5s ease-out 1.2s forwards;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* เพิ่ม hover effect */
+.text:hover {
+  background-color: #f3dede;
+  transform: scale(1.03);
+}
+
+/* Keyframes */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeGrow {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Zoom effect on click (when checkbox is checked) --- */
+
+/* Zoom the circle to full screen */
+#zoom-toggle:checked ~ .container .circle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(30);
+  z-index: 10;
+}
+
+/* Zoom the trunk together with circle */
+#zoom-toggle:checked ~ .container .trunk {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(calc(-50%), calc(-50% - 30px)) scale(30);
+  z-index: 10;
+}
+
+/* Hide other elements */
+#zoom-toggle:checked ~ .container .top-section,
+#zoom-toggle:checked ~ .container .text {
+  opacity: 0;
+}

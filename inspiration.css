@@ -1,0 +1,108 @@
+/* Reset พื้นฐาน */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Sarabun', sans-serif;
+  background-color: #fce4ec; /* สีชมพูอ่อน */
+  overflow-x: hidden;
+  color: #5f4747; /* สีตัวอักษรอ่านง่ายบนชมพู */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.8;
+}
+
+/* canvas ฟองสบู่ ครอบเต็มหน้าจอ */
+#bubble-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* อยู่ด้านหลังเนื้อหา */
+  pointer-events: none;
+}
+
+/* header */
+header {
+  background: linear-gradient(135deg, #fbe9e7, #ad9ca2);
+  color: #241a1a;
+  padding: 60px 20px;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 1; /* ให้อยู่บน canvas */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3em;
+  font-weight: 700;
+}
+
+header p {
+  font-size: 1.2em;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+/* container หลัก */
+.container {
+  width: 100%;
+  max-width: 900px;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1; /* ให้อยู่บน canvas */
+}
+
+/* card section */
+.section-card {
+  background-color: rgba(255, 255, 255, 0.85); /* โปร่งเล็กน้อย ให้ฟองเห็นเบาๆ */
+  padding: 30px;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: floatCard 5s ease-in-out infinite alternate; /* เพิ่มอนิเมชั่นลอยขึ้นลง */
+}
+
+/* hover effect */
+.section-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* float animation */
+@keyframes floatCard {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-8px); } /* ขยับขึ้นเล็กน้อย */
+  100% { transform: translateY(0px); }
+}
+
+/* ปุ่มย้อนกลับ - วงกลมด้านซ้ายบน */
+.back-button {
+  position: fixed;           /* ติดอยู่บนหน้าจอ */
+  top: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #d8a69a; /* สีชมพูน้ำตาล */
+  color: #4b1515;            /* สีลูกศร */
+  border-radius: 50%;         /* เป็นวงกลมสมบูรณ์ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 32px;           /* ลูกศรใหญ่ขึ้น */
+  font-weight: 900;          /* ตัวหนา */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+  z-index: 1000;             /* อยู่เหนือทุกอย่าง */
+}
+
+.back-button:hover {
+  background-color: #c4897f;  /* สีเข้มขึ้นเมื่อ hover */
+  transform: scale(1.1);       /* ขยายเล็กน้อย */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}

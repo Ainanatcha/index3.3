@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>inspiration Zoom</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <input type="checkbox" id="zoom-toggle" hidden>
+
+  <div class="container">
+    <div class="top-section"></div>
+
+    <div class="bottom-section">
+      <div class="tree">
+        <div class="circle"></div>
+        <div class="trunk"></div>
+      </div>
+
+      <!-- ใช้ label เพื่อ trigger การซูม และใช้ JavaScript redirect -->
+      <label for="zoom-toggle" class="text" onclick="goToNextPage()">inspiration</label>
+    </div>
+
+    <div class="zoom-page">
+      <div class="zoom-effect"></div>
+    </div>
+  </div>
+
+  <script>
+    function goToNextPage() {
+      // รอให้เล่นเอฟเฟกต์ก่อน (เช่น 1 วินาที) แล้วเปลี่ยนหน้า
+      setTimeout(function () {
+        window.location.href = "heart.html";
+      }, 1000); // 1000 มิลลิวินาที = 1 วินาที
+    }
+  </script>
+</body>
+</html>

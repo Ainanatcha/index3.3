@@ -1,0 +1,94 @@
+/* styles.css */
+body {
+  font-family: 'TH Sarabun', sans-serif;
+  background-color: #f6f6f6;
+  margin: 0;
+  padding: 10px;
+}
+
+.activities-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+/* กรอบกิจกรรม ขยับขึ้นลง พร้อมเงา */
+.activity-section {
+  background-color: #857373;
+  color: #fff;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start; 
+  justify-content: space-between;
+  gap: 20px;
+  animation: float-box 4s ease-in-out infinite alternate;
+}
+
+/* ชื่อหัวข้อของกิจกรรม */
+.section-title {
+  background-color: #747c85;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 18px;
+  display: inline-block;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* เนื้อหากิจกรรม */
+.activity-content {
+  flex: 1 1 50%;
+  padding-right: 20px;
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.activity-content p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* ส่วนของภาพ */
+.image-wrapper {
+  flex: 1 1 30%; 
+  text-align: right;
+}
+
+.image-wrapper img {
+  max-width: 80%;
+  border-radius: 15px;
+  transition: transform 1.5s ease-in-out;
+  animation: float-image 5s ease-in-out infinite alternate;
+}
+
+/* อนิเมชันกรอบกิจกรรม */
+@keyframes float-box {
+  0% { 
+    transform: translateY(0px); 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+  50% { 
+    transform: translateY(-15px); 
+    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+  }
+  100% { 
+    transform: translateY(0px); 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+}
+
+/* อนิเมชันภาพลอยขึ้นลง */
+@keyframes float-image {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}

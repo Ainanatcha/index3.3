@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Follow Your Heart</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Tahoma", sans-serif;
+      background: linear-gradient(135deg, #fbe9e7, #fce4ec);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 120vh;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    /* ฟองอากาศ canvas */
+    #bubble-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* กรอบโปร่งใสครอบทั้งหมด พร้อม animation */
+    .content-box {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 40px;
+      padding: 60px 80px;
+      box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      width: 90%;
+      max-width: 900px;
+      min-height: 50vh;
+      max-height: 80vh;
+      margin: auto;
+
+      /* Animation ลอยขึ้นลง + ซูมเข้าออก */
+      animation: floatScale 6s ease-in-out infinite;
+      transform-origin: center center;
+    }
+
+    @keyframes floatScale {
+      0% {
+        transform: translateY(0px) scale(1);
+      }
+      25% {
+        transform: translateY(-8px) scale(1.02);
+      }
+      50% {
+        transform: translateY(0px) scale(1);
+      }
+      75% {
+        transform: translateY(8px) scale(0.98);
+      }
+      100% {
+        transform: translateY(0px) scale(1);
+      }
+    }
+
+    .top-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .top-buttons button {
+      padding: 16px 28px;
+      border: none;
+      border-radius: 18px;
+      cursor: pointer;
+      font-size: 18px;
+      background: #886969;
+      color: #4b1515;
+      transition: 0.3s;
+    }
+
+    .top-buttons button:hover {
+      background: #a58787;
+    }
+
+    .quote {
+      text-align: center;
+    }
+
+    .quote .thai {
+      font-size: 28px;
+      color: #1b110ba2;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .quote .english {
+      font-size: 22px;
+      color: #9c6f6f;
+      font-style: italic;
+    }
+
+    @media (max-width: 1024px) {
+      .content-box {
+        padding: 50px 60px;
+        max-width: 95%;
+        min-height: auto;
+      }
+      .quote .thai { font-size: 24px; }
+      .quote .english { font-size: 20px; }
+    }
+
+    @media (max-width: 600px) {
+      .content-box {
+        padding: 30px 40px;
+        gap: 30px;
+      }
+      .top-buttons button {
+        padding: 12px 18px;
+        font-size: 16px;
+      }
+      .quote .thai { font-size: 20px; }
+      .quote .english { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bubble-canvas"></canvas>
+
+  <div class="content-box">
+    <div class="top-buttons">
+      <button onclick="location.href='certificates.html'">certificates</button>
+      <button onclick="location.href='contact.html'">contact</button>
+      <button onclick="location.href='inspiration.html'">inspiration</button>
+      <button onclick="location.href='profile.html'">profile</button>
+      <button onclick="location.href='Activities.html'">Activities</button>
+    </div>
+
+    <div class="quote">
+      <p class="thai">“สิ่งเดียวที่คุณมีซึ่งไม่มีใครมีคือตัวคุณเอง”</p>
+      <p class="english">Follow your heart's voice</p>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('bubble-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let bubbles = [];
+    let mouse = { x: null, y: null };
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < 60; i++) {
+      bubbles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 15 + 5,
+        speed: Math.random() * 0.5 + 0.2,
+        dx: (Math.random() - 0.5) * 0.2,
+        dy: (Math.random() - 0.5) * 0.2,
+        color: `rgba(200, 150, 140, ${Math.random() * 0.3 + 0.15})`
+      });
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      bubbles.forEach(bubble => {
+        bubble.y -= bubble.speed;
+        bubble.x += bubble.dx;
+
+        if (bubble.y + bubble.radius < 0) {
+          bubble.y = canvas.height + bubble.radius;
+          bubble.x = Math.random() * canvas.width;
+        }
+        if (bubble.x + bubble.radius < 0) bubble.x = canvas.width + bubble.radius;
+        if (bubble.x - bubble.radius > canvas.width) bubble.x = -bubble.radius;
+
+        if (mouse.x && mouse.y) {
+          let dx = bubble.x - mouse.x;
+          let dy = bubble.y - mouse.y;
+          let dist = Math.sqrt(dx*dx + dy*dy);
+          if (dist < 100) {
+            bubble.x += dx/20;
+            bubble.y += dy/20;
+          }
+        }
+
+        ctx.beginPath();
+        ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
+        ctx.fillStyle = bubble.color;
+        ctx.fill();
+        ctx.closePath();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+/* ฟอนต์และพื้นหลังหลัก */
+body {
+  font-family: 'Sarabun', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #a49696;
+  color: #c08989;
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(135deg, #3f2421, #ad9ca2); /* โทนชมพูน้ำตาล */
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+header p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+/* ปุ่มย้อนกลับ - วงกลมด้านซ้ายบน */
+.back-button {
+  position: fixed;           /* ติดอยู่บนหน้าจอ */
+  top: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #d49e90; /* สีชมพูน้ำตาล */
+  color: #4b1515;            /* สีลูกศร */
+  border-radius: 50%;         /* เป็นวงกลมสมบูรณ์ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 32px;           /* ลูกศรใหญ่ขึ้น */
+  font-weight: 1000;          /* ตัวหนา */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+  z-index: 1000;             /* อยู่เหนือทุกอย่าง */
+}
+
+.back-button:hover {
+  background-color: #b67e74;  /* สีเข้มขึ้นเมื่อ hover */
+  transform: scale(1.1);       /* ขยายเล็กน้อย */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* คอนเทนเนอร์ */
+.contact-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* กล่องแต่ละช่องทาง */
+.contact-card {
+  background: white;
+  padding: 1.2rem 1rem;  
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+.contact-card h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #193d66;
+}
+
+.contact-card p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+/* ลิงก์ปกติ */
+.contact-link {
+  display: inline-block;
+  margin-top: 0.3rem;
+  text-decoration: none;
+  color: #9ca35e;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
+/* ลิงก์โซเชียลมีเดียเป็นกรอบ พร้อมอนิเมชัน */
+.social-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;       /* เว้นระยะระหว่างปุ่ม */
+  padding: 0.5rem 1rem;       /* เพิ่มพื้นที่ด้านใน */
+  border: 2px solid #9ca35e;  /* เส้นกรอบ */
+  border-radius: 12px;         /* มุมโค้งมน */
+  text-decoration: none;
+  color: #9ca35e;
+  font-weight: bold;
+  font-size: 0.95rem;
+  background-color: #f7f7f7;   /* สีพื้นอ่อน ๆ สบายตา */
+  transition: all 0.3s ease;
+  
+  /* อนิเมชันลอยเบา ๆ */
+  animation: float 3s ease-in-out infinite alternate;
+}
+
+.social-link:hover {
+  background-color: #f7cfcf;  /* พาสเทลชมพูอ่อน */
+  border-color: #f7a1a1;      /* ขอบสีเข้มขึ้นนิด */
+  color: #4b3131;             /* ตัวอักษรเข้ม */
+  transform: scale(1.08);     /* ขยายเล็กน้อย */
+}
+
+/* Keyframes สำหรับลอยเบา ๆ */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ส่วนท้าย */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #f1f1f1;
+  font-size: 0.9rem;
+  color: #666;
+}

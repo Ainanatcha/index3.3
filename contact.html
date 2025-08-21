@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ช่องทางการติดต่อ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* ฟอนต์และพื้นหลังหลัก */
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #fbe9e7, #ad9ca2); /* ชมพูอ่อนน้ำตาล */
+            color: rgb(56, 43, 43);
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+
+        header p {
+            font-size: 1.1em;
+        }
+
+        /* ปุ่มย้อนกลับ - วงกลมด้านซ้ายบน */
+        .back-button {
+            position: fixed;       /* ติดหน้าจอ */
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #d8a69a; /* สีชมพูน้ำตาล */
+            color: #4b1515;
+            border-radius: 50%;    /* ทำให้กลมสมบูรณ์ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background-color: #c4897f;  /* สีเข้มขึ้นเวลาวางเมาส์ */
+            transform: scale(1.1);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 50px 20px;
+        }
+
+        .contact-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-card h2 {
+            color: #46525f;
+            margin-top: 0;
+        }
+
+        .contact-link, .social-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #6e5267; /* โทนชมพูน้ำตาล */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-link:hover, .social-link:hover {
+             background-color: #684d61;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ปุ่มย้อนกลับ -->
+    <a href="heart.html" class="back-button">←</a>
+
+    <header>
+        <h1>ติดต่อเรา</h1>
+        <p>คุณสามารถติดต่อเราได้ตามช่องทางด้านล่าง</p>
+    </header>
+
+    <main class="contact-container">
+        <div class="contact-card">
+            <h2>อีเมล 📧</h2>
+            <p>ส่งอีเมลหาเราได้ที่:</p>
+            <a href="mailto:nathchamanaphant@gmail.com" class="contact-link">nathchamanaphant@gmail.com</a>
+        </div>
+        <div class="contact-card">
+            <h2>โทรศัพท์ 📞</h2>
+            <p>โทรสอบถามข้อมูลได้ที่:</p>
+            <a href="tel:+66837846780" class="contact-link">+66837846780</a>
+        </div>
+        <div class="contact-card">
+            <h2>ที่อยู่ 📍</h2>
+            <p>สถานที่อยู่อาศัย</p>
+            <p>75/3 หมู่ 11 ต.ดอนฉิมพลี อ.บางน้ำเปรี้ยว จ.ฉะเชิงเทรา รหัสไปรษณีย์24170</p>
+        </div>
+        <div class="contact-card">
+            <h2>โซเชียลมีเดีย 🌐</h2>
+            <p>ติดตามเราได้ที่:</p>
+            <a href="https://www.facebook.com/natchamanapan.07/" class="social-link">Facebook</a>
+            <a href="https://www.instagram.com/natchainaa_13/" class="social-link">Instagram</a>
+        </div>
+    </main>
+
+</body>
+</html>

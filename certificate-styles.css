@@ -1,0 +1,103 @@
+body {
+    font-family: 'Sarabun', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+   background: linear-gradient(135deg, #fbe9e7, #ad9ca2); /* ชมพูอ่อน */
+    color: rgb(48, 36, 36);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    font-size: 1.1em;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    justify-items: center;
+}
+
+.certificate-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 400px;
+}
+
+.certificate-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.certificate-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    color: #4CAF50;
+    margin-top: 0;
+}
+
+.card-content p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+}
+
+/* ปุ่มย้อนกลับ - วงกลมด้านซ้ายบน */
+.back-button {
+  position: fixed;           /* ติดอยู่บนหน้าจอ */
+  top: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #d8a69a; /* สีชมพูน้ำตาล */
+  color: #4b1515;            /* สีลูกศร */
+  border-radius: 50%;         /* เป็นวงกลมสมบูรณ์ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 32px;           /* ลูกศรใหญ่ขึ้น */
+  font-weight: 900;          /* ตัวหนา */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+  z-index: 1000;             /* อยู่เหนือทุกอย่าง */
+}
+
+.back-button:hover {
+  background-color: #c4897f;  /* สีเข้มขึ้นเมื่อ hover */
+  transform: scale(1.1);       /* ขยายเล็กน้อย */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
