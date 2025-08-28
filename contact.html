@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ช่องทางการติดต่อ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="contact-styles.css">
+    <style>
+        /* header sticky + transition */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f7e6e6;
+            padding: 30px 20px;
+            text-align: center;
+            z-index: 999;
+            transition: top 0.3s ease;
+        }
+        main {
+            margin-top: 140px; /* เว้นให้ header ไม่บังเนื้อหา */
+        }
+    </style>
+</head>
+<body>
+    <!-- ปุ่มย้อนกลับ -->
+    <a href="heart.html" class="back-button">←</a>
+
+    <header>
+        <h1>ติดต่อเรา</h1>
+        <p>คุณสามารถติดต่อเราได้ตามช่องทางด้านล่าง</p>
+    </header>
+
+    <main class="contact-container">
+        <div class="contact-card">
+            <h2>อีเมล 📧</h2>
+            <p>ส่งอีเมลหาเราได้ที่:</p>
+            <a href="mailto:nathchamanaphant@gmail.com" class="contact-link">nathchamanaphant@gmail.com</a>
+        </div>
+        
+        <div class="contact-card">
+            <h2>โทรศัพท์ 📞</h2>
+            <p>โทรสอบถามข้อมูลได้ที่:</p>
+            <a href="tel:+66837846780" class="contact-link">+66837846780</a>
+        </div>
+        <div class="contact-card">
+            <h2>โซเชียลมีเดีย 🌐</h2>
+            <p>ติดตามเราได้ที่:</p>
+            <a href="https://www.facebook.com/natchamanapan.07/" class="social-link">Facebook</a>
+            <a href="https://www.instagram.com/natchainaa_13/" class="social-link">Instagram</a>
+        </div>
+        <div class="contact-card">
+            <h2>ที่อยู่ 📍</h2>
+            <p>75/3 หมู่ 11 ต.ดอนฉิมพลี อ.บางน้ำเปรี้ยว จ.ฉะเชิงเทรา รหัสไปรษณีย์ 24170</p>
+        </div>
+    </main>
+
+    <script>
+        // JS ซ่อน/แสดง header ตอน scroll
+        let lastScroll = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > lastScroll && currentScroll > 50) {
+                // scroll ลง → ซ่อน header
+                header.style.top = '-150px';
+            } else {
+                // scroll ขึ้น → แสดง header
+                header.style.top = '0';
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>

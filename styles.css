@@ -1,0 +1,215 @@
+/* Reset */
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  overflow: hidden;
+  background-color: #f5e8e8;
+}
+
+/* Container */
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top section */
+.top-section {
+  background-color: #77292dcb;
+  height: 20%;
+  animation: slideDown 1s ease-out forwards;
+  transition: opacity 0.5s ease;
+}
+
+/* Bottom section */
+.bottom-section {
+  background-color: #f1d2d2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 2s ease-out forwards;
+}
+
+/* Tree */
+.tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  animation: moveUp 1.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Circle (tree top) responsive */
+.circle {
+  width: clamp(80px, 18vw, 140px);
+  height: clamp(80px, 18vw, 140px);
+  background: radial-gradient(circle at 30% 30%, #77292d, #5a1f20);
+  border-radius: 50%;
+  transition: transform 1.5s ease-in-out;
+  z-index: 1;
+}
+
+/* Trunk (tree base) - shorter */
+.trunk {
+  width: clamp(15px, 4vw, 30px);
+  height: clamp(40px, 8vh, 70px); /* ลดความยาวลง */
+  background-color: #77292dcb;
+  margin-top: -5px;
+  transition: transform 1.5s ease-in-out;
+}
+
+/* Text */
+.text {
+  color: #4d1f21;
+  background-color: #f5e8e8;
+  font-size: clamp(1.2rem, 5vw, 2rem);
+  font-weight: bold;
+  padding: 12px 28px;
+  border-radius: 25px;
+  border: 2px solid #e5c7c7;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.95);
+  animation: fadeGrow 1.5s ease-out 1.2s forwards, pulse 2s infinite ease-in-out 2s;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  letter-spacing: 2px;
+}
+
+/* Hover effect */
+.text:hover {
+  background-color: #f3dede;
+  transform: scale(1.07);
+  box-shadow: 0 0 18px rgba(255, 200, 200, 0.7);
+}
+
+/* Flash light effect */
+.flash {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.9), transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  z-index: 20;
+}
+.flash.active {
+  opacity: 1;
+  animation: flashFade 1.2s ease forwards;
+}
+
+/* Animations */
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes moveUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeGrow {
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes flashFade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Zoom effect */
+#zoom-toggle:checked ~ .container .circle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(35);
+  z-index: 10;
+  background: radial-gradient(circle, #77292d, #4d1f21);
+}
+
+#zoom-toggle:checked ~ .container .trunk {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(35);
+  z-index: 10;
+  background-color: #4d1f21;
+}
+
+/* Hide others */
+#zoom-toggle:checked ~ .container .top-section,
+#zoom-toggle:checked ~ .container .text {
+  opacity: 0;
+}
+/* Top section */
+.top-section {
+  background-color: #77292dcb;
+  height: clamp(60px, 15vh, 120px); /* ปรับขนาดยืดหยุ่น */
+  animation: slideDown 1s ease-out forwards;
+  transition: opacity 0.5s ease;
+}
+/* ========== Mobile (เล็กกว่า 768px) ========== */
+@media (max-width: 767px) {
+  .circle {
+    width: 90px;
+    height: 90px;
+  }
+  .trunk {
+    width: 18px;
+    height: 50px;
+  }
+  .text {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+}
+
+/* ========== Tablet (768px - 1023px) ========== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .circle {
+    width: 120px;
+    height: 120px;
+  }
+  .trunk {
+    width: 24px;
+    height: 65px;
+  }
+  .text {
+    font-size: 1.5rem;
+    padding: 12px 24px;
+  }
+}
+
+/* ========== Desktop (1024px ขึ้นไป) ========== */
+@media (min-width: 1024px) {
+  .circle {
+    width: 140px;
+    height: 140px;
+  }
+  .trunk {
+    width: 30px;
+    height: 70px;
+  }
+  .text {
+    font-size: 2rem;
+    padding: 14px 30px;
+  }
+}

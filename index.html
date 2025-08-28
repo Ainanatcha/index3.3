@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inspiration Zoom</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <input type="checkbox" id="zoom-toggle" hidden>
+
+  <div class="container">
+    <div class="top-section"></div>
+
+    <div class="bottom-section">
+      <div class="tree">
+        <div class="circle"></div>
+        <div class="trunk"></div>
+      </div>
+
+      <!-- Trigger zoom + redirect -->
+      <label for="zoom-toggle" class="text" onclick="goToNextPage()">inspiration</label>
+    </div>
+
+    <!-- แสงวาบ -->
+    <div class="flash"></div>
+  </div>
+
+  <script>
+    function goToNextPage() {
+      // แสดงแสงวาบ
+      document.querySelector(".flash").classList.add("active");
+
+      // redirect หลังจากแอนิเมชันเสร็จ
+      setTimeout(function () {
+        window.location.href = "heart.html";
+      }, 1600); 
+    }
+  </script>
+</body>
+</html>

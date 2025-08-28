@@ -1,0 +1,319 @@
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Sarabun', sans-serif;
+    background: linear-gradient(135deg, #fbe9e7, #fce4ec);
+    color: #333;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.6;
+    position: relative;
+}
+
+/* ปุ่มย้อนกลับ */
+.back-button {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+    background-color: #d8a69a;
+    color: #4b1515;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 900;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s, background-color 0.3s;
+    z-index: 1000;
+}
+
+.back-button:hover {
+    background-color: #c4897f;
+    transform: scale(1.1);
+}
+
+/* Canvas ฟองอากาศ */
+#bubble-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Container */
+.profile-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    width: 95%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* Content Section */
+.content-section {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Header Box */
+.header-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hello-icon {
+    font-family: 'Playfair Display', serif;
+    font-size: 8em;
+    font-weight: 900;
+    color: #626b579a;
+    line-height: 1;
+}
+
+.header-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    line-height: 1;
+}
+
+.header-text .name {
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 2px;
+}
+
+.header-text .quote {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Info Box */
+.info-box {
+    background-color: #e1e8e6;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: floatCard 5s ease-in-out infinite alternate;
+}
+
+.info-box.personal-info { background-color: #f0e6e4; }
+.info-box.education { background-color: #e1e8e6; }
+.info-box.hobbies { background-color: #f0e6e4; }
+
+.info-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.info-box h3 {
+    color: #614832;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.info-box p { margin: 5px 0; }
+
+@keyframes floatCard {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Image Section */
+.image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    animation: floatImage 6s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+    0% { transform: translateY(0) scale(1); }
+    25% { transform: translateY(-8px) scale(1.02); }
+    50% { transform: translateY(0) scale(1); }
+    75% { transform: translateY(8px) scale(0.98); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-container { flex-direction: column; width: 100%; border-radius: 0; }
+    .content-section, .image-section { flex: none; width: 100%; }
+    .content-section { padding: 20px; gap: 15px; }
+    .image-section { height: 300px; }
+    .image-section img { width: 90%; height: 100%; border-radius: 15px; }
+    .hello-icon { font-size: 6em; }
+    .header-text h1 { font-size: 2em; }
+    .header-text .name { font-size: 0.9em; }
+    .header-text .quote { font-size: 0.8em; }
+}
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        width: 100%;
+        border-radius: 0;
+    }
+    .content-section, .image-section { flex: none; width: 100%; }
+    .content-section { padding: 15px; gap: 15px; }
+    .image-section { height: auto; max-height: 400px; }
+    .image-section img { width: 90%; height: auto; border-radius: 15px; }
+    .hello-icon { font-size: 5.5em; }
+    .header-text h1 { font-size: 1.8em; }
+    .header-text .name { font-size: 0.9em; }
+    .header-text .quote { font-size: 0.8em; }
+}
+/* Header ปรากฏแบบ slide up */
+.header-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s forwards 0.3s; /* delay 0.3s */
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Info box ลอยขึ้นพร้อม fade in */
+.info-box {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUpBox 0.8s forwards;
+}
+
+.info-box.personal-info { animation-delay: 0.5s; }
+.info-box.education { animation-delay: 0.7s; }
+.info-box.hobbies { animation-delay: 0.9s; }
+
+@keyframes fadeInUpBox {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* รูปภาพลอยแบบ smooth */
+.image-section img {
+    animation: floatImage 6s ease-in-out infinite, fadeInImage 1s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInImage {
+    to { opacity: 1; }
+}
+/* ========== Mobile (เล็กกว่า 768px) ========== */
+@media (max-width: 767px) {
+  .circle {
+    width: 90px;
+    height: 90px;
+  }
+  .trunk {
+    width: 18px;
+    height: 50px;
+  }
+  .text {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+}
+
+/* ========== Tablet (768px - 1023px) ========== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .circle {
+    width: 120px;
+    height: 120px;
+  }
+  .trunk {
+    width: 24px;
+    height: 65px;
+  }
+  .text {
+    font-size: 1.5rem;
+    padding: 12px 24px;
+  }
+}
+
+/* ========== Desktop (1024px ขึ้นไป) ========== */
+@media (min-width: 1024px) {
+  .circle {
+    width: 140px;
+    height: 140px;
+  }
+  .trunk {
+    width: 30px;
+    height: 70px;
+  }
+  .text {
+    font-size: 2rem;
+    padding: 14px 30px;
+  }
+}
+/* ========== Mobile (เล็กกว่า 768px) ========== */
+@media (max-width: 767px) {
+  .back-button {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;   /* ไอคอนลูกศรเล็กลง */
+    top: 15px;
+    left: 15px;
+  }
+}
+
+/* ========== Tablet (768px - 1023px) ========== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .back-button {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    top: 18px;
+    left: 18px;
+  }
+}
+
+/* ========== Desktop (1024px ขึ้นไป) ========== */
+@media (min-width: 1024px) {
+  .back-button {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    top: 20px;
+    left: 20px;
+  }
+}

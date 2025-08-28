@@ -1,0 +1,210 @@
+/* ฟอนต์และพื้นหลังหลัก */
+body {
+    font-family: 'Sarabun', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ปุ่มย้อนกลับ - วงกลม */
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #d8a69a;
+  color: #4b1515;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
+  z-index: 1000;
+}
+.back-button:hover {
+  background-color: #c4897f;
+  transform: scale(1.1) rotate(-10deg);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #f7e6e6;
+    width: 100%;
+    position: fixed; /* เปลี่ยนจาก sticky เป็น fixed */
+    top: 0;
+    left: 0;
+    z-index: 999;
+    transition: top 0.3s ease-in-out;
+}
+header h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: #462637;
+}
+header p {
+    margin-top: 5px;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    color: #644152;
+}
+
+/* คอนเทนเนอร์การ์ด */
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 120px 20px 30px; /* เว้นด้านบน header */
+    justify-items: center;
+    align-items: stretch;
+}
+
+/* การ์ดช่องทางการติดต่อ */
+.contact-card {
+    background: #ffffff;
+    padding: 20px 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* staggered animation */
+.contact-card:nth-child(1) { animation-delay: 0.1s; }
+.contact-card:nth-child(2) { animation-delay: 0.2s; }
+.contact-card:nth-child(3) { animation-delay: 0.3s; }
+.contact-card:nth-child(4) { animation-delay: 0.4s; }
+
+.contact-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+}
+
+/* Glow effect บน card */
+.contact-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255,182,193,0.15), transparent 70%);
+    transform: rotate(0deg);
+    transition: transform 0.5s ease;
+    pointer-events: none;
+}
+.contact-card:hover::before {
+    transform: rotate(180deg);
+}
+
+/* Card headings และเนื้อหา */
+.contact-card h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: #c4897f;
+}
+.contact-card p {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+    color: #462637;
+}
+
+/* ลิงก์อีเมล */
+.contact-link {
+    display: inline-block;
+    margin-top: 0.3rem;
+    text-decoration: none;
+    color: #9ca35e;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    position: relative;
+}
+.contact-link::after {
+    content: '';
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: #9ca35e;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+}
+.contact-link:hover::after {
+    width: 100%;
+}
+.contact-link:hover {
+    color: #4b3131;
+}
+
+/* ลิงก์โซเชียล */
+.social-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid #9ca35e;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #9ca35e;
+    font-weight: bold;
+    font-size: 0.95rem;
+    background-color: #f7f7f7;
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite alternate;
+}
+.social-link:hover {
+    background-color: #f7cfcf;
+    border-color: #f7a1a1;
+    color: #4b3131;
+    transform: scale(1.08);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #f1f1f1;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* --- Keyframes --- */
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Responsive ปรับขนาดปุ่ม */
+@media (max-width: 767px){
+  .back-button { width: 35px; height: 35px; font-size: 18px; top: 15px; left: 15px; line-height: 35px;}
+}
+@media (min-width: 768px) and (max-width: 1023px){
+  .back-button { width: 45px; height: 45px; font-size: 20px; top: 18px; left: 18px; line-height: 45px;}
+}
+@media (min-width: 1024px){
+  .back-button { width: 50px; height: 50px; font-size: 24px; top: 20px; left: 20px; line-height: 50px;}
+}

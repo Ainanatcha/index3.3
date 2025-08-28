@@ -1,0 +1,237 @@
+/* ===================== Reset พื้นฐาน ===================== */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Sarabun', sans-serif;
+  background: linear-gradient(135deg, #fbe9e7, #fce4ec);
+  overflow-x: hidden;
+  color: #3c2f2f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.8;
+  box-sizing: border-box;
+}
+
+/* canvas ฟองสบู่ */
+#bubble-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ===================== ปุ่มย้อนกลับ ===================== */
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #d8a69a;
+  color: #4b1515;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: 900;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+  z-index: 1000;
+}
+
+.back-button:hover {
+  background-color: #c4897f;
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* ===================== header ===================== */
+header {
+  text-align: center;
+  padding: 20px 10px;
+  position: relative;
+  z-index: 1;
+}
+
+header h1 {
+  font-size: 40px;
+  margin: 0;
+}
+
+/* ===================== container หลัก ===================== */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+/* ===================== section card ===================== */
+.section-card {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: floatCard 5s ease-in-out infinite alternate;
+}
+
+.section-card h2 {
+  margin-top: 0;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #880e4f;
+}
+
+.section-card p {
+  line-height: 1.6;
+  margin: 0;
+}
+
+.section-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+@keyframes floatCard {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ===================== ของตกแต่ง (circle, trunk, text) ===================== */
+.circle {
+  width: 100px;
+  height: 100px;
+}
+.trunk {
+  width: 20px;
+  height: 60px;
+}
+.text {
+  font-size: 1.4rem;
+  padding: 10px 20px;
+}
+
+/* ===================== Responsive ===================== */
+
+/* --- Mobile (<768px) --- */
+@media (max-width: 767px) {
+  header h1 {
+    font-size: 28px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  .section-card {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .back-button {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+    top: 10px;
+    left: 10px;
+  }
+
+  .circle {
+    width: 90px;
+    height: 90px;
+  }
+  .trunk {
+    width: 18px;
+    height: 50px;
+  }
+  .text {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+}
+
+/* --- Tablet (768px - 1023px) --- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  header h1 {
+    font-size: 32px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .section-card {
+    padding: 20px;
+    margin-bottom: 22px;
+  }
+
+  .back-button {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    top: 12px;
+    left: 12px;
+  }
+
+  .circle {
+    width: 120px;
+    height: 120px;
+  }
+  .trunk {
+    width: 24px;
+    height: 65px;
+  }
+  .text {
+    font-size: 1.5rem;
+    padding: 12px 24px;
+  }
+}
+
+/* --- Desktop (>=1024px) --- */
+@media (min-width: 1024px) {
+  header h1 {
+    font-size: 40px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .section-card {
+    padding: 25px;
+    margin-bottom: 25px;
+  }
+
+  .back-button {
+    width: 60px;
+    height: 60px;
+    font-size: 32px;
+    top: 20px;
+    left: 20px;
+  }
+
+  .circle {
+    width: 140px;
+    height: 140px;
+  }
+  .trunk {
+    width: 30px;
+    height: 70px;
+  }
+  .text {
+    font-size: 2rem;
+    padding: 14px 30px;
+  }
+}
